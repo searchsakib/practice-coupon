@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coupon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="text-center mt-5">
+      <h1 class="text-5xl font-semibold">Coupon Code:</h1>
+      <h3 class="text-2xl mt-4 mb-3">Shoe Price:$1000</h3>
+      <input
+        id="input"
+        class="text-black bg-gray-100 w-1/4 border border-black rounded-md outline-none px-2 py-2"
+        type="text"
+      />
+      <button
+        id="btn"
+        class="block mx-auto text-center mt-4 px-4 py-2 bg-purple-800 text-white rounded-md hover:bg-purple-950"
+      >
+        Apply Discount
+      </button>
+      <p id="pay-text" class="text-2xl mt-7 mb-3 text-rose-600 hidden">
+        Please Pay : $<span id="after-discount">dummy</span>(30% discount Coupon
+        Applied)
+      </p>
+    </div>
+    <script>
+      document.getElementById('btn').addEventListener('click', () => {
+        const coupon = 'KAKA30';
+        const input = document.getElementById('input');
+        const afterDiscount = document.getElementById('after-discount');
+        const payText = document.getElementById('pay-text');
+
+        if (coupon !== input.value) {
+          input.value = '';
+          payText.classList.add('hidden');
+          return alert('Please Provide a Valid Coupon Code');
+        }
+
+        const disCount = 1000 - 1000 * 0.3;
+        payText.classList.remove('hidden');
+        afterDiscount.innerText = disCount;
+        input.value = '';
+      });
+    </script>
+  </body>
+</html>
